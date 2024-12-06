@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Clipboard Lookup</title>
+  <style>
+    body {
+      width: 200px;
+      padding: 10px;
+      font-family: Arial, sans-serif;
+    }
+    input {
+      width: 100%;
+      padding: 5px;
+    }
+    button {
+      width: 100%;
+      padding: 5px;
+      background-color: #4CAF50;
+      color: white;
+      border: none;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+  <input type="text" id="key" placeholder="输入key">
+  <button id="lookup">查找</button>
+  <div id="result"></div>
+
+  <script>
+    document.getElementById('lookup').addEventListener('click', function() {
+      const key = document.getElementById('key').value;
+      chrome.runtime.sendMessage(
+        { action: 'getValueForKey', key: key },
+        function(response) {
+          document.getElementById('result').innerText = response.value;
+        }
+      );
+    });
+  </script>
+</body>
+</html>

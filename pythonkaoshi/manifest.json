@@ -1,0 +1,24 @@
+{
+  "manifest_version": 3,
+  "name": "永璋考试小助手",
+  "version": "1.0",
+  "description": "yongzhang的python考试小助手",
+  "permissions": [
+    "activeTab",
+    "clipboardWrite"
+  ],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "content_scripts": [
+    {
+      "matches": ["<all_urls>"],
+      "js": ["content.js"]
+    }
+  ],
+  "icons": {
+    "16": "icons/003.jpg",
+    "48": "icons/004.jpg",
+    "128": "icons/005.jpg"
+  }
+}
